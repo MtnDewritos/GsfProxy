@@ -26,7 +26,7 @@
 
         <!-- Content Provider -->
         <provider
-            android:name=".GservicesProvider"
+            android:name="org.microg.gms.gcm.GservicesProvider"
             android:authorities="com.google.android.gsf.gservices"
             android:exported="true"
             android:grantUriPermissions="true"
