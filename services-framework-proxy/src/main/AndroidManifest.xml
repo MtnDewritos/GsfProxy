@@ -13,6 +13,14 @@
         android:allowBackup="false"
         android:icon="@mipmap/ic_core_service_app"
         android:label="@string/gsf_app_name">
+<provider
+    android:name=".GservicesProvider"
+    android:authorities="com.google.android.gsf.gservices"
+    android:exported="true"
+    android:grantUriPermissions="true"
+    android:readPermission="com.google.android.providers.gsf.permission.READ_GSERVICES"
+    android:writePermission="com.google.android.providers.gsf.permission.WRITE_GSERVICES" />
+      
         <service
             android:name="org.microg.gms.gcm.PushRegisterProxy"
             android:exported="true"
