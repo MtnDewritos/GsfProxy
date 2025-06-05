@@ -1,37 +1,47 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-  ~ SPDX-FileCopyrightText: 2015 microG Project Team
-  ~ SPDX-License-Identifier: Apache-2.0
-  -->
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.google.android.gsf">
 
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Minimum SDK & Target SDK -->
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="30" />
 
-    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
-    <uses-permission android:name="com.google.android.c2dm.permission.SEND"/>
+    <!-- Permissions -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.SEND" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.WRITE_GSERVICES" />
 
+    <!-- Application -->
     <application
-        android:forceQueryable="true"
-        android:allowBackup="false"
         android:icon="@mipmap/ic_core_service_app"
-        android:label="@string/gsf_app_name">
-<provider
-    android:name=".GservicesProvider"
-    android:authorities="com.google.android.gsf.gservices"
-    android:exported="true"
-    android:grantUriPermissions="true"
-    android:readPermission="com.google.android.providers.gsf.permission.READ_GSERVICES"
-    android:writePermission="com.google.android.providers.gsf.permission.WRITE_GSERVICES" />
-      
+        android:label="@string/gsf_app_name"
+        android:allowBackup="false"
+        android:forceQueryable="true">
+
+        <!-- Content Provider -->
+        <provider
+            android:name=".GservicesProvider"
+            android:authorities="com.google.android.gsf.gservices"
+            android:exported="true"
+            android:grantUriPermissions="true"
+            android:readPermission="com.google.android.providers.gsf.permission.READ_GSERVICES"
+            android:writePermission="com.google.android.providers.gsf.permission.WRITE_GSERVICES" />
+
+        <!-- Push Register Service -->
         <service
             android:name="org.microg.gms.gcm.PushRegisterProxy"
             android:exported="true"
             android:permission="com.google.android.c2dm.permission.RECEIVE">
             <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.REGISTER"/>
+                <action android:name="com.google.android.c2dm.intent.REGISTER" />
             </intent-filter>
             <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.UNREGISTER"/>
+                <action android:name="com.google.android.c2dm.intent.UNREGISTER" />
             </intent-filter>
         </service>
+
     </application>
 
 </manifest>
