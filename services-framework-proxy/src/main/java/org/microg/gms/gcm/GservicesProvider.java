@@ -1,3 +1,17 @@
+/*
+ * SPDX-FileCopyrightText: 2015 microG Project Team
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+package org.microg.gms.gcm;
+
+import android.content.ContentProvider;
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.MatrixCursor;
+import android.net.Uri;
+import android.support.annotation.Nullable;
+
 public class GservicesProvider extends ContentProvider {
     @Override
     public boolean onCreate() {
